@@ -13,7 +13,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: "*"
+  origin: "https://vi-notes-frontend-x0i6.onrender.com"
 }));
 const PORT=process.env.PORT || 5000;
 
