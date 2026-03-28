@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://vi-notes-backend-1coc.onrender.com";
 
 export const registerUser = async (data: any) => {
   const res = await fetch(`${BASE_URL}/register`, {
