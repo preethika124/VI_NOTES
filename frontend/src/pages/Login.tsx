@@ -27,14 +27,14 @@ const Login = () => {
   <div className="container">
     <div className="auth-box">
       <h2>Welcome Back </h2>
-
+      <label> Email</label>
       <input
         type="email"
         placeholder="Enter your email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-
+      <label> Password</label>
       <input
         type="password"
         placeholder="Enter your password"

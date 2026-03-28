@@ -12,6 +12,10 @@ type EventType =
   | { type: "paste"; length: number };
 
 const Editor = () => {
+    const handleLogout = () => {
+  localStorage.removeItem("token");
+  navigate("/login");
+};
   const [text, setText] = useState("");
   const [events, setEvents] = useState<EventType[]>([]);
   const [result, setResult] = useState("");
@@ -177,14 +181,32 @@ const Editor = () => {
   return (
     <div className="container">
       <div className="header">
-        <h2>Vi-Notes</h2>
+  <h2>Vi-Notes</h2>
 
-        {result && (
-          <div className={`badge ${result === "Human" ? "human-badge" : "ai-badge"}`}>
-            {result}
-          </div>
-        )}
+  <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+    
+    {result && (
+      <div className={`badge ${result === "Human" ? "human-badge" : "ai-badge"}`}>
+        {result}
       </div>
+    )}
+
+   
+    <button
+      onClick={handleLogout}
+      style={{
+        background: "#ef4444",
+        padding: "6px 12px",
+        borderRadius: "6px",
+        border: "none",
+        color: "white",
+        cursor: "pointer"
+      }}
+    >
+      Logout
+    </button>
+  </div>
+</div>
 
       <div className="main-layout">
         <div className="editor-section">
