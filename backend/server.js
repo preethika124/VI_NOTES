@@ -10,10 +10,14 @@ const User = require("./models/User");
 
 const app = express();
 
-app.use(cors());
-app.use(express.json());
 
-mongoose.connect("mongodb://mongodb:mongodb@ac-2wbvfp9-shard-00-00.atmd6ak.mongodb.net:27017,ac-2wbvfp9-shard-00-01.atmd6ak.mongodb.net:27017,ac-2wbvfp9-shard-00-02.atmd6ak.mongodb.net:27017/?ssl=true&replicaSet=atlas-6bmv0r-shard-0&authSource=admin&appName=Cluster0")
+app.use(express.json());
+app.use(cors({
+  origin: "*"
+}));
+const PORT=process.env.PORT || 5000;
+
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB Connected");
   })
@@ -103,4 +107,4 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Backend running"));
+app.listen(PORT, () => console.log("Backend running"));
